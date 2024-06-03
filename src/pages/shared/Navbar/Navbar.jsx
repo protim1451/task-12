@@ -6,10 +6,10 @@ const Navbar = () => {
 
     const links = <>
         <li>
-           <Link>Home</Link>
+           <Link to='/'>Home</Link>
         </li>
         <li>
-           <Link>Donation Campaigns</Link>
+           <Link to='donationCampaign'>Donation Campaigns</Link>
         </li>
         <li>
            <Link to='petListing'>Pet Listing</Link>
@@ -40,7 +40,7 @@ const Navbar = () => {
                             >
                                 (555) 412-1234
                             </a>
-                            <Link
+                            <Link to='login'
                                 className="text-sm  text-blue-600 dark:text-blue-500 hover:underline"
                             >
                                 Login

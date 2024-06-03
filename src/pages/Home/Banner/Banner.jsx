@@ -8,24 +8,24 @@ const Banner = () => {
         <div>
             <Carousel>
                 <div>
-                    <img src="https://i.ibb.co/1dXV8M3/1.jpg" alt="Banner 1" />
+                    <img src="https://i.ibb.co/P50cw4p/cat3.jpg" alt="Banner 1" />
                 </div>
                 <div>
-                    <img src="https://i.ibb.co/d72Q9J8/banner1.jpg" alt="Banner 8" />
+                    <img src="https://i.ibb.co/hZN0CFW/dog6.jpg" alt="Banner 8" />
                 </div>
                 <div>
-                    <img src="https://i.ibb.co/260DWSS/2.jpg" alt="Banner 2" />
+                    <img src="https://i.ibb.co/wgH28Sm/bird3.jpg" alt="Banner 2" />
                 </div>
                 <div>
-                    <img src="https://i.ibb.co/897nMVB/3.jpg" alt="Banner 3" />
+                    <img src="https://i.ibb.co/2k2RHk7/rabbit1.jpg" alt="Banner 3" />
                 </div>
                 <div>
-                    <img src="https://i.ibb.co/ncWJWCt/4.jpg" alt="Banner 4" />
+                    <img src="https://i.ibb.co/VNK0ysG/cat6.jpg" alt="Banner 4" />
                 </div>
                 <div>
-                    <img src="https://i.ibb.co/r2zNKSt/5.jpg" alt="Banner 5" />
+                    <img src="https://i.ibb.co/mFZNJ2f/dog7.jpg" alt="Banner 5" />
                 </div>
-                <div>
+                {/* <div>
                     <img src="https://i.ibb.co/VYPVdNz/6.jpg" alt="Banner 6" />
                 </div>
                 <div>
@@ -39,7 +39,7 @@ const Banner = () => {
                 </div>
                 <div>
                     <img src="https://i.ibb.co/k69n1d3/banner4.jpg" alt="Banner 8" />
-                </div>
+                </div> */}
             </Carousel>
         </div>
     );
