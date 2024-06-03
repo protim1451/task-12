@@ -14,6 +14,9 @@ const Navbar = () => {
         <li>
            <Link to='petListing'>Pet Listing</Link>
         </li>
+        <li>
+           <Link to='register'>Register</Link>
+        </li>
     </>
     return (
         <div>
