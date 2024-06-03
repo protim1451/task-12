@@ -11,6 +11,9 @@ const Banner = () => {
                     <img src="https://i.ibb.co/1dXV8M3/1.jpg" alt="Banner 1" />
                 </div>
                 <div>
+                    <img src="https://i.ibb.co/d72Q9J8/banner1.jpg" alt="Banner 8" />
+                </div>
+                <div>
                     <img src="https://i.ibb.co/260DWSS/2.jpg" alt="Banner 2" />
                 </div>
                 <div>
@@ -30,6 +33,12 @@ const Banner = () => {
                 </div>
                 <div>
                     <img src="https://i.ibb.co/ccxfHkH/8.jpg" alt="Banner 8" />
+                </div>
+                <div>
+                    <img src="https://i.ibb.co/L6KT7Ch/banner2.jpg" alt="Banner 8" />
+                </div>
+                <div>
+                    <img src="https://i.ibb.co/k69n1d3/banner4.jpg" alt="Banner 8" />
                 </div>
             </Carousel>
         </div>

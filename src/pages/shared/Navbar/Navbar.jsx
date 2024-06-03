@@ -12,7 +12,7 @@ const Navbar = () => {
            <Link>Donation Campaigns</Link>
         </li>
         <li>
-           <Link>Pet Listing</Link>
+           <Link to='petListing'>Pet Listing</Link>
         </li>
     </>
     return (
@@ -40,12 +40,11 @@ const Navbar = () => {
                             >
                                 (555) 412-1234
                             </a>
-                            <a
-                                href="#"
+                            <Link
                                 className="text-sm  text-blue-600 dark:text-blue-500 hover:underline"
                             >
                                 Login
-                            </a>
+                            </Link>
                             <DarkThemeToggle className="text-3xl"/>
                         </div>
                     </div>

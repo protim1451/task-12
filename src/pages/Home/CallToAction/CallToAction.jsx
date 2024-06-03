@@ -7,7 +7,7 @@ const CallToAction = () => {
                 <div className="flex flex-col lg:flex-row items-center">
                     <div className="lg:w-1/2">
                         <img
-                            src="path-to-inspirational-image"
+                            src="https://i.ibb.co/WPVXyTV/inpiration-Photo.jpg"
                             alt="Adopt a pet"
                             className="w-full rounded-lg shadow-lg"
                         />
