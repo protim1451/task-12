@@ -1,0 +1,55 @@
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+}
+
+.navbar button{
+    background-color: teal;
+}
+
+.profile-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.profile-tooltip {
+    display: none;
+    position: absolute;
+    top: 50px;
+    left: -50px;
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+.profile-wrapper:hover .profile-tooltip {
+    display: block;
+}
+
+.profile-tooltip img {
+    display: block;
+    margin: 0 auto 10px;
+}
+
+.profile-tooltip p {
+    text-align: center;
+    margin: 0;
+    font-weight: bold;
+}
+
+/* Dark and light theme styles */
+.dark {
+    background-color: #333;
+    color: white;
+}
+
+.light {
+    background-color: #fff;
+    color: black;
+}

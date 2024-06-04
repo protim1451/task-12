@@ -11,7 +11,7 @@ const Register = () => {
         formState: { errors },
     } = useForm();
 
-    const {createUser} = useAuth();
+    const {createUser, updateUserProfile} = useAuth();
 
     const onSubmit = (data) => {
         //console.log(data);
@@ -19,6 +19,13 @@ const Register = () => {
         .then(result =>{
             const loggedUser = result.user;
             console.log(loggedUser);
+            updateUserProfile(data.name, data.photoUrl)
+            .then(()=>{
+                const userInfo = {
+                    name: data.name,
+                    email: data.email
+                }
+            })
         })
     }
     return (

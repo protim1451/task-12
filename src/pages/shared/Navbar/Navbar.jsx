@@ -1,22 +1,52 @@
 import { DarkThemeToggle } from "flowbite-react";
 import { Link } from "react-router-dom";
+import useAuth from "../../../hooks/useAuth";
+import Swal from "sweetalert2";
+import { useEffect, useState } from "react";
+import './Navbar.css';
 
 
 const Navbar = () => {
 
+    const { user, logOut } = useAuth();
+    const [currentUser, setCurrentUser] = useState(null);
+
+    useEffect(() => {
+        setCurrentUser(user);
+    }, [user]);
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => {
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Logged out successfully",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            })
+            .catch(error => console.error(error));
+    }
+
     const links = <>
         <li>
-           <Link to='/'>Home</Link>
+            <Link to='/'>Home</Link>
         </li>
         <li>
-           <Link to='donationCampaign'>Donation Campaigns</Link>
+            <Link to='donationCampaign'>Donation Campaigns</Link>
         </li>
         <li>
-           <Link to='petListing'>Pet Listing</Link>
+            <Link to='petListing'>Pet Listing</Link>
         </li>
-        <li>
-           <Link to='register'>Register</Link>
-        </li>
+        {/* {
+            user && <span>{user.displayName}</span>
+        } */}
+        {
+            !user && <li>
+                <Link to='register'>Register</Link>
+            </li>
+        }
     </>
     return (
         <div>
@@ -43,12 +73,62 @@ const Navbar = () => {
                             >
                                 (555) 412-1234
                             </a>
-                            <Link to='login'
-                                className="text-sm  text-blue-600 dark:text-blue-500 hover:underline"
-                            >
-                                Login
-                            </Link>
-                            <DarkThemeToggle className="text-3xl"/>
+                            {/* {
+                                user ?
+                                    <> 
+                                        <button onClick={handleLogOut}
+                                            type="button"
+                                            className="text-white bg-gradient-to-r from-blue-500
+                                via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none
+                                 focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg 
+                                     text-sm px-5 py-2.5 text-center me-2 mb-2"
+                                        >
+                                            Logout
+                                        </button>
+                                    </>
+                                    : <>
+                                        <Link to='login'>
+                                            <button
+                                                type="button"
+                                                className="text-white bg-gradient-to-r from-blue-500
+                                        via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none
+                                         focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg 
+                                             text-sm px-5 py-2.5 text-center me-2 mb-2"
+                                            >
+                                                login
+                                            </button>
+                                        </Link>
+                                    </>
+                            } */}
+                            <div className="navbar-end relative flex items-center">
+                                {currentUser ? (
+                                    <div className="profile-wrapper">
+                                        <img className="rounded-full w-10 h-10 cursor-pointer" src={currentUser.photoURL} alt={currentUser.displayName} />
+                                        <div className="profile-tooltip">
+                                            <p>{currentUser.displayName}</p>
+                                            <img className="rounded-full w-20 h-20" src={currentUser.photoURL} alt={currentUser.displayName} />
+                                        </div>
+                                    </div>
+                                ) : null}
+                                {user ? (
+                                    <button onClick={logOut} type="button"
+                                        className="text-white bg-gradient-to-r from-blue-500
+                                via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none
+                                 focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg 
+                                     text-sm px-5 py-2.5 text-center me-2 mb-2">
+                                        Logout</button>
+                                ) : (
+                                    <Link to='/login'
+                                        type="button"
+                                        className="text-white bg-gradient-to-r from-blue-500
+                                        via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none
+                                         focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg 
+                                             text-sm px-5 py-2.5 text-center me-2 mb-2">
+                                        Login</Link>
+                                )}
+
+                            </div>
+                            <DarkThemeToggle className="text-3xl" />
                         </div>
                     </div>
                 </nav>
@@ -56,7 +136,7 @@ const Navbar = () => {
                     <div className="max-w-screen-xl px-4 py-3 mx-auto">
                         <div className="flex items-center justify-center">
                             <ul className="flex flex-row font-medium mt-0 space-x-8 rtl:space-x-reverse text-sm">
-                                { links }
+                                {links}
                             </ul>
                         </div>
                     </div>

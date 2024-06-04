@@ -1,13 +1,40 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 
 const Login = () => {
+    const navigate = useNavigate();
+    const location = useLocation()
+
+    const {signIn} = useAuth();
+
+    const handleLogin = event =>{
+        event.preventDefault();
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log(email, password);
+        signIn(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Logged in successfully",
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
+                  //navigate(from, {replace: true});
+                  navigate('/');
+            })
+    }
+
     return (
         <div>
             <h1 className="text-4xl text-orange-500 font-bold text-center my-10">Login Now!!!</h1>
-
-
-            <form className="max-w-sm mx-auto">
+            <form onSubmit={handleLogin} className="max-w-sm mx-auto">
                 <div className="mb-5">
                     <label
                         htmlFor="email"
