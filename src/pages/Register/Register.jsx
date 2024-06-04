@@ -1,8 +1,12 @@
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import { Helmet } from "react-helmet-async";
+import { useState } from "react";
+import { FaEyeSlash, FaRegEye } from "react-icons/fa";
 
 const Register = () => {
+    const [showPassword, setShowPassword] = useState(false);
 
     const {
         register,
@@ -30,6 +34,9 @@ const Register = () => {
     }
     return (
         <div>
+            <Helmet>
+                <title>PetConnect || Register</title>
+            </Helmet>
             <h1 className="text-4xl text-orange-500 font-bold text-center my-10">Register Now!!!</h1>
             <form onSubmit={handleSubmit(onSubmit)} className="max-w-md mx-auto">
                 <div className="relative z-0 w-full mb-5 group">
@@ -51,7 +58,7 @@ const Register = () => {
                 </div>
                 <div className="relative z-0 w-full mb-5 group">
                     <input
-                        type="password"
+                        type={showPassword ? "text" : "password"}
                         {...register("password", {
                             required: true,
                             minLength: 6,
@@ -63,6 +70,12 @@ const Register = () => {
                         className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                         placeholder=" "
                     />
+                    <span className="absolute top-[10px] right-3 cursor-pointer" onClick={() =>
+                        setShowPassword(!showPassword)}>
+                        {
+                            showPassword ? <FaRegEye /> : <FaEyeSlash />
+                        }
+                    </span>
                     {errors.password?.type === 'minLength' && <span className="text-red-600">Password must be 6 characters</span>}
                     {errors.password?.type === 'maxLength' && <span className="text-red-600">Password must be less than 20 characters</span>}
                     {errors.password?.type === 'pattern' &&
@@ -115,7 +128,7 @@ const Register = () => {
                     Submit
                 </button>
             </form>
-            <p className="text-center">Already have an account?
+            <p className="mt-5 text-center">Already have an account?
                 <Link to='/login' className="text-blue-500 underline italic"> Login now</Link></p>
         </div>
     );
