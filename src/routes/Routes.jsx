@@ -8,6 +8,7 @@ import PetListing from "../pages/PetListing/PetListing";
 import DonationCampaign from "../pages/DonationCampaign/DonationCampaign";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
+import Dashboard from "../layout/Dashboard";
 
   export const router = createBrowserRouter([
     {
@@ -36,4 +37,8 @@ import Register from "../pages/Register/Register";
         },
       ],
     },
+    {
+      path: 'dashboard',
+      element: <Dashboard></Dashboard>,
+    }
   ]);
