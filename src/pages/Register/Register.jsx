@@ -1,11 +1,15 @@
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { Helmet } from "react-helmet-async";
 import { useState } from "react";
 import { FaEyeSlash, FaRegEye } from "react-icons/fa";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+import Swal from "sweetalert2";
 
 const Register = () => {
+    const axiosPublic = useAxiosPublic();
+    const navigate = useNavigate();
     const [showPassword, setShowPassword] = useState(false);
 
     const {
@@ -15,22 +19,37 @@ const Register = () => {
         formState: { errors },
     } = useForm();
 
-    const {createUser, updateUserProfile} = useAuth();
+    const { createUser, updateUserProfile, logOut } = useAuth();
 
     const onSubmit = (data) => {
         //console.log(data);
         createUser(data.email, data.password)
-        .then(result =>{
-            const loggedUser = result.user;
-            console.log(loggedUser);
-            updateUserProfile(data.name, data.photoUrl)
-            .then(()=>{
-                const userInfo = {
-                    name: data.name,
-                    email: data.email
-                }
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+                updateUserProfile(data.name, data.photoUrl)
+                    .then(() => {
+                        const userInfo = {
+                            name: data.name,
+                            email: data.email
+                        }
+                        axiosPublic.post('/users', userInfo)
+                            .then(res => {
+                                if (res.data.insertedId) {
+                                    reset();
+                                    Swal.fire({
+                                        position: "top-end",
+                                        icon: "success",
+                                        title: "User created successfully",
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    });
+                                    logOut();
+                                    navigate('/');
+                                }
+                            })
+                    })
             })
-        })
     }
     return (
         <div>

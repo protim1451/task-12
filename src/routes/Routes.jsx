@@ -9,6 +9,8 @@ import DonationCampaign from "../pages/DonationCampaign/DonationCampaign";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import Dashboard from "../layout/Dashboard";
+import PrivateRoute from "./PrivateRoute";
+import AddPet from "../pages/Dashboard/AddPet/AddPet";
 
   export const router = createBrowserRouter([
     {
@@ -40,5 +42,13 @@ import Dashboard from "../layout/Dashboard";
     {
       path: 'dashboard',
       element: <Dashboard></Dashboard>,
+      children: [
+        {
+          path: 'addPet',
+          element: <PrivateRoute>
+            <AddPet></AddPet>
+          </PrivateRoute>,
+        },
+      ]
     }
   ]);
