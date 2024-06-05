@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import Select from 'react-select';
 import useAxiosPublic from '../../hooks/useAxiosPublic';
-
 
 const PetListing = () => {
   const [pets, setPets] = useState([]);
@@ -12,16 +11,15 @@ const PetListing = () => {
   const [hasMore, setHasMore] = useState(true);
   const axiosPublic = useAxiosPublic();
 
-  useEffect(() => {
-    fetchPets();
-  }, [page]);
-
-  const fetchPets = async () => {
+  // Fetch pets with useCallback to memoize the function
+  const fetchPets = useCallback(async () => {
     try {
       const response = await axiosPublic.get('/api/pets', {
         params: {
           page,
           limit: 10,
+          searchTerm,
+          category: selectedCategory ? selectedCategory.value : '',
         },
       });
       setPets((prevPets) => [...prevPets, ...response.data]);
@@ -31,14 +29,24 @@ const PetListing = () => {
     } catch (error) {
       console.error('Error fetching pets:', error);
     }
-  };
+  }, [page, searchTerm, selectedCategory, axiosPublic]);
+
+  useEffect(() => {
+    fetchPets();
+  }, [fetchPets]);
 
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
+    setPets([]); // Reset pets state
+    setPage(1); // Reset page to 1
+    setHasMore(true); // Reset hasMore to true
   };
 
   const handleCategoryChange = (option) => {
     setSelectedCategory(option);
+    setPets([]); // Reset pets state
+    setPage(1); // Reset page to 1
+    setHasMore(true); // Reset hasMore to true
   };
 
   const filteredPets = pets.filter((pet) => {

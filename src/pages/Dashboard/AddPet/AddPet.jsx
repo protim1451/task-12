@@ -49,7 +49,7 @@ const AddPet = () => {
 
     try {
       await axiosPublic.post('/api/pets', petData);
-      //navigate('/myAddedPet');
+      navigate('/petListing');
     } catch (error) {
       console.error('Error adding pet:', error);
     }
