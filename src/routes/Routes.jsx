@@ -11,6 +11,7 @@ import Register from "../pages/Register/Register";
 import Dashboard from "../layout/Dashboard";
 import PrivateRoute from "./PrivateRoute";
 import AddPet from "../pages/Dashboard/AddPet/AddPet";
+import PetDetails from "../pages/PetDetails.jsx/PetDetails";
 
   export const router = createBrowserRouter([
     {
@@ -36,6 +37,12 @@ import AddPet from "../pages/Dashboard/AddPet/AddPet";
         {
           path: 'register',
           element: <Register></Register>,
+        },
+        {
+          path: "pet/:id",
+          element: <PrivateRoute>
+            <PetDetails></PetDetails>
+          </PrivateRoute>,
         },
       ],
     },
