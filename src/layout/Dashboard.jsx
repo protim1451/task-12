@@ -4,6 +4,8 @@ import { IoAddCircle } from "react-icons/io5";
 import { MdCampaign, MdOutlinePets } from "react-icons/md";
 import { VscGitPullRequestGoToChanges } from "react-icons/vsc";
 import { NavLink, Outlet } from "react-router-dom";
+import Navbar from "../pages/shared/Navbar/Navbar";
+import Footer from "../pages/shared/Footer/Footer";
 
 const Dashboard = () => {
 
@@ -89,7 +91,9 @@ const Dashboard = () => {
                 </div>
             </aside>
             <div className="p-4 sm:ml-64">
+                <Navbar></Navbar>
                 <Outlet></Outlet>
+                <Footer></Footer>
             </div>
         </>
 

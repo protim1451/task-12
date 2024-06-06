@@ -1,20 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import Select from 'react-select';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import useAxiosPublic from '../../../hooks/useAxiosPublic';
 import useAuth from '../../../hooks/useAuth';
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
-const AddPet = () => {
+const UpdatePet = () => {
   const { register, handleSubmit, setValue, formState: { errors } } = useForm();
   const [imageUrl, setImageUrl] = useState('');
   const { user } = useAuth();
   const axiosPublic = useAxiosPublic();
   const navigate = useNavigate();
+  const { id: petId } = useParams();
 
   const categories = [
     { value: 'cat', label: 'Cat' },
@@ -23,6 +24,26 @@ const AddPet = () => {
     { value: 'fish', label: 'Fish' },
     { value: 'bird', label: 'Bird' }
   ];
+
+  useEffect(() => {
+    fetchPetDetails();
+  }, []);
+
+  const fetchPetDetails = async () => {
+    try {
+      const response = await axiosPublic.get(`/api/pets/${petId}`);
+      const pet = response.data;
+      setValue('name', pet.name);
+      setValue('age', pet.age);
+      setValue('category', pet.category);
+      setValue('location', pet.location);
+      setValue('shortDescription', pet.shortDescription);
+      setValue('longDescription', pet.longDescription);
+      setImageUrl(pet.imageUrl);
+    } catch (error) {
+      console.error('Error fetching pet details:', error);
+    }
+  };
 
   const handleImageUpload = async (event) => {
     const file = event.target.files[0];
@@ -41,22 +62,20 @@ const AddPet = () => {
     const petData = {
       ...data,
       imageUrl,
-      adopted: false,
-      addedAt: new Date(),
       owner: user.email 
     };
 
     try {
-      await axiosPublic.post('/api/pets', petData);
+      await axiosPublic.put(`/api/pets/${petId}`, petData);
       navigate('/dashboard');
     } catch (error) {
-      console.error('Error adding pet:', error);
+      console.error('Error updating pet:', error);
     }
   };
 
   return (
     <div className="max-w-md mx-auto my-10">
-      <h1 className="text-2xl font-bold mb-6">Add a Pet</h1>
+      <h1 className="text-2xl font-bold mb-6">Update Pet</h1>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         <div>
           <label className="block text-sm font-medium text-gray-700">Pet Image</label>
@@ -65,6 +84,7 @@ const AddPet = () => {
             onChange={handleImageUpload}
             className="mt-1 block w-full"
           />
+          {imageUrl && <img src={imageUrl} alt="Pet" className="mt-2 w-32 h-32" />}
         </div>
         <div>
           <label className="block text-sm font-medium text-gray-700">Pet Name</label>
@@ -123,11 +143,11 @@ const AddPet = () => {
           type="submit"
           className="w-full py-2 px-4 bg-blue-500 text-white rounded-md"
         >
-          Submit
+          Update
         </button>
       </form>
     </div>
   );
 };
 
-export default AddPet;
+export default UpdatePet;
