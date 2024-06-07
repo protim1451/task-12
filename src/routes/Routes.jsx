@@ -14,6 +14,10 @@ import AddPet from "../pages/Dashboard/AddPet/AddPet";
 import PetDetails from "../pages/PetDetails.jsx/PetDetails";
 import MyAddedPets from "../pages/Dashboard/MyAddedPets/MyAddedPets";
 import UpdatePet from "../pages/Dashboard/UpdatePet/UpdatePet";
+import CreateDonationCampaign from "../pages/Dashboard/CreateDonationCampaign/CreateDonationCampaign";
+import MyDonationCampaigns from "../pages/Dashboard/MyDonationCampaigns/MyDonationCampaigns";
+import EditDonation from "../pages/Dashboard/EditDonation/EditDonation";
+import AllUsers from "../pages/Dashboard/AllUsers/AllUsers";
 
   export const router = createBrowserRouter([
     {
@@ -69,6 +73,27 @@ import UpdatePet from "../pages/Dashboard/UpdatePet/UpdatePet";
           element: <PrivateRoute>
             <MyAddedPets></MyAddedPets>
           </PrivateRoute>,
+        },
+        {
+          path: 'createDonationCampaign',
+          element: <PrivateRoute>
+            <CreateDonationCampaign></CreateDonationCampaign>
+          </PrivateRoute>,
+        },
+        {
+          path: 'myDonationCampaign',
+          element: <PrivateRoute>
+            <MyDonationCampaigns></MyDonationCampaigns>
+          </PrivateRoute>,
+        },
+        {
+          path: 'edit-donation/:id',
+          element: <EditDonation></EditDonation>,
+        },
+        //Admin routes
+        {
+          path: 'users',
+          element: <AllUsers></AllUsers>,
         },
       ]
     }

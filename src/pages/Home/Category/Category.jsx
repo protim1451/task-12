@@ -5,6 +5,7 @@ import bird from '../../../assets/category/bird4.jpeg';
 import fish from '../../../assets/category/fish.jpg';
 import rabbit from '../../../assets/category/rabbit.jpg';
 import hamster from '../../../assets/category/hamster.jpeg';
+import { Link } from 'react-router-dom';
 
 const categories = [
   { name: 'Cats', img: cat },
@@ -12,7 +13,7 @@ const categories = [
   { name: 'Rabbits', img: rabbit },
   { name: 'Fish', img: fish },
   { name: 'Birds', img: bird },
-  { name: 'Hamsters', img: hamster },  
+  { name: 'Hamsters', img: hamster },
 ];
 
 const Category = () => {
@@ -27,9 +28,11 @@ const Category = () => {
               <div className="font-bold text-xl mb-2 text-center">{category.name}</div>
             </div>
             <div className="px-6 pt-4 pb-2 text-center">
-              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                View More
-              </button>
+              <Link to='/petListing'>
+                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                  View More
+                </button>
+              </Link>
             </div>
           </div>
         ))}
