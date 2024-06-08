@@ -12,6 +12,7 @@ import useAdmin from '../hooks/useAdmin';
 const Dashboard = () => {
     const [isSidebarOpen, setSidebarOpen] = useState(false);
     const [isAdmin] = useAdmin();
+    //const isAdmin = true;
 
     const handleSidebarToggle = () => {
         setSidebarOpen(!isSidebarOpen);
@@ -90,7 +91,7 @@ const Dashboard = () => {
                                         </NavLink>
                                     </li>
                                     <li>
-                                        <NavLink className="flex gap-1 items-center" to="/dashboard/adoptionRequest">
+                                        <NavLink className="flex gap-1 items-center" to="/dashboard/adoption-requests">
                                             <VscGitPullRequestGoToChanges />Adoption Request
                                         </NavLink>
                                     </li>

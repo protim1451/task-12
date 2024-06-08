@@ -81,7 +81,7 @@ const MyAddedPets = () => {
 
     const handlePageSizeChange = (e) => {
         setPageSize(Number(e.target.value));
-        setPageIndex(0);  // Reset to first page when page size changes
+        setPageIndex(0);  
     };
 
     return (

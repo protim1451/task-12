@@ -18,6 +18,8 @@ import CreateDonationCampaign from "../pages/Dashboard/CreateDonationCampaign/Cr
 import MyDonationCampaigns from "../pages/Dashboard/MyDonationCampaigns/MyDonationCampaigns";
 import EditDonation from "../pages/Dashboard/EditDonation/EditDonation";
 import AllUsers from "../pages/Dashboard/AllUsers/AllUsers";
+import MyAdoptionRequests from "../pages/Dashboard/MyAdoptionRequests/MyAdoptionRequests";
+import UserHome from "../pages/Dashboard/UserHome/UserHome";
 
   export const router = createBrowserRouter([
     {
@@ -89,6 +91,16 @@ import AllUsers from "../pages/Dashboard/AllUsers/AllUsers";
         {
           path: 'edit-donation/:id',
           element: <EditDonation></EditDonation>,
+        },
+        {
+          path: 'adoption-requests',
+          element: <MyAdoptionRequests></MyAdoptionRequests>,
+        },
+        {
+          path: 'userHome',
+          element: <PrivateRoute>
+            <UserHome></UserHome>
+          </PrivateRoute>
         },
         //Admin routes
         {

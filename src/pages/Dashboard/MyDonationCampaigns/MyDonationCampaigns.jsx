@@ -15,18 +15,24 @@ const MyDonationCampaigns = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetchCampaigns();
-    }, []);
+        if (user) {
+            fetchCampaigns();
+        }
+    }, [user]);
 
     const fetchCampaigns = async () => {
-        try {
-          const response = await axiosPublic.get(`/api/donation-campaigns?owner=${user.email}`);
-          setCampaigns(response.data);
-        } catch (error) {
-          console.error('Error fetching campaigns:', error);
+        if (!user || !user.email) {
+            console.error('User is not authenticated or email is missing');
+            return;
         }
-      };
-      
+        try {
+            console.log(`Fetching campaigns for user: ${user.email}`); // Log the email being used
+            const response = await axiosPublic.get(`/api/donation-campaigns?owner=${user.email}`);
+            setCampaigns(response.data);
+        } catch (error) {
+            console.error('Error fetching campaigns:', error);
+        }
+    };
 
     const handlePauseCampaign = async (id, isPaused) => {
         try {
