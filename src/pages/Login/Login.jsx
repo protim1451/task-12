@@ -4,6 +4,7 @@ import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
 import { useState } from "react";
 import { FaEyeSlash, FaRegEye } from "react-icons/fa";
+import SocialLogin from "../shared/SocialLogin/SocialLogin";
 
 
 const Login = () => {
@@ -84,7 +85,7 @@ const Login = () => {
                     Submit
                 </button>
             </form>
-
+            <SocialLogin></SocialLogin>
             <p className="text-center mt-5">Don't have an account?
                 <Link to='/register' className="text-blue-500 underline italic"> Register now!</Link></p>
         </div>

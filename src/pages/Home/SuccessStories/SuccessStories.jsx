@@ -20,15 +20,15 @@ const successStories = [
 
 const SuccessStories = () => {
     return (
-        <div className="bg-gray-100 py-12">
+        <div className="bg-gray-100 py-12 dark:bg-gray-800">
             <div className="container mx-auto px-6">
-                <h2 className="text-4xl font-bold text-center mb-6 text-gray-800">Success Stories</h2>
+                <h2 className="text-4xl font-bold text-center mb-6 text-gray-800 dark:text-white">Success Stories</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     {successStories.map((story, index) => (
                         <div key={index} className="max-w-sm rounded overflow-hidden shadow-lg bg-white">
                             <img className="w-full  object-cover" src={story.img} alt={story.name} />
                             <div className="px-6 py-4">
-                                <div className="font-bold text-xl mb-2 text-center">{story.name}</div>
+                                <div className="font-bold text-xl mb-2 text-center text-black">{story.name}</div>
                                 <p className="text-gray-700 text-base">
                                     {story.story}
                                 </p>

@@ -6,6 +6,7 @@ import { useState } from "react";
 import { FaEyeSlash, FaRegEye } from "react-icons/fa";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import Swal from "sweetalert2";
+import SocialLogin from "../shared/SocialLogin/SocialLogin";
 
 const Register = () => {
     const axiosPublic = useAxiosPublic();
@@ -147,6 +148,7 @@ const Register = () => {
                     Submit
                 </button>
             </form>
+            <SocialLogin></SocialLogin>
             <p className="mt-5 text-center">Already have an account?
                 <Link to='/login' className="text-blue-500 underline italic"> Login now</Link></p>
         </div>

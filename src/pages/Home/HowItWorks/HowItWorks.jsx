@@ -2,9 +2,9 @@ import React from 'react';
 
 const HowItWorks = () => {
     return (
-        <div className="bg-white py-12">
+        <div className="bg-white dark:bg-gray-800 py-12">
             <div className="container mx-auto px-6 text-center">
-                <h2 className="text-4xl font-bold mb-4 text-gray-800">How It Works</h2>
+                <h2 className="text-4xl font-bold mb-4 text-gray-800 dark:text-white">How It Works</h2>
                 <div className="flex flex-col lg:flex-row items-center mt-8">
                     <div className="lg:w-1/3 p-4">
                         <div className="p-6 bg-gray-100 rounded-lg shadow-lg">

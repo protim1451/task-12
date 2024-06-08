@@ -72,12 +72,6 @@ const Navbar = () => {
                             </span>
                         </a>
                         <div className="flex items-center space-x-6 rtl:space-x-reverse">
-                            <a
-                                href="#"
-                                className="text-sm  text-gray-500 dark:text-white hover:underline"
-                            >
-                                (555) 412-1234
-                            </a>
                             {/* {
                                 user ?
                                     <> 
