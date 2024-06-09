@@ -20,6 +20,10 @@ import EditDonation from "../pages/Dashboard/EditDonation/EditDonation";
 import AllUsers from "../pages/Dashboard/AllUsers/AllUsers";
 import MyAdoptionRequests from "../pages/Dashboard/MyAdoptionRequests/MyAdoptionRequests";
 import UserHome from "../pages/Dashboard/UserHome/UserHome";
+import AdminHome from "../pages/Dashboard/AdminHome/AdminHome";
+import AllPets from "../pages/Dashboard/AllPets/AllPets";
+import AllDonationCampaigns from "../pages/Dashboard/AllDonationCampaigns/AllDonationCampaigns";
+import DonationDetails from "../pages/Dashboard/DonationDetails/DonationDetails";
 
   export const router = createBrowserRouter([
     {
@@ -37,6 +41,10 @@ import UserHome from "../pages/Dashboard/UserHome/UserHome";
         {
           path: 'donationCampaign',
           element: <DonationCampaign></DonationCampaign>,
+        },
+        {
+          path: 'donationCampaign/:id',
+          element: <DonationDetails></DonationDetails>,
         },
         {
           path: 'login',
@@ -102,10 +110,23 @@ import UserHome from "../pages/Dashboard/UserHome/UserHome";
             <UserHome></UserHome>
           </PrivateRoute>
         },
+        
         //Admin routes
         {
           path: 'users',
           element: <AllUsers></AllUsers>,
+        },
+        {
+          path: 'adminHome',
+          element: <AdminHome></AdminHome>,
+        },
+        {
+          path: 'allPet',
+          element: <AllPets></AllPets>,
+        },
+        {
+          path: 'allDonation',
+          element: <AllDonationCampaigns></AllDonationCampaigns>,
         },
       ]
     }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaDollarSign, FaEnvelope, FaHandsHelping, FaUsers } from "react-icons/fa";
 import { IoIosHome } from "react-icons/io";
 import { IoAddCircle } from "react-icons/io5";
@@ -7,12 +7,27 @@ import { VscGitPullRequestGoToChanges } from "react-icons/vsc";
 import { NavLink, Outlet } from "react-router-dom";
 import Footer from "../pages/shared/Footer/Footer";
 import { DarkThemeToggle } from "flowbite-react";
+import useAuth from '../hooks/useAuth';
 import useAdmin from '../hooks/useAdmin';
 
 const Dashboard = () => {
+    const { user } = useAuth();
     const [isSidebarOpen, setSidebarOpen] = useState(false);
-    const [isAdmin] = useAdmin();
-    //const isAdmin = true;
+    const [userRole, setUserRole] = useState('');
+
+    // useEffect(() => {
+    //     if (user && user.role) {
+    //         setUserRole(user.role);
+    //     }
+    // }, [user]);
+
+    // console.log('user role', userRole);
+    //const [isAdmin] = useAdmin();
+    const isAdmin = false;
+
+    if (!user) {
+        return <div>Loading...</div>;
+    }
 
     const handleSidebarToggle = () => {
         setSidebarOpen(!isSidebarOpen);
@@ -66,7 +81,7 @@ const Dashboard = () => {
                                             <MdOutlinePets />All Pets
                                         </NavLink>
                                     </li>
-                                    
+
                                     <li>
                                         <NavLink className="flex gap-1 items-center" to="/dashboard/allDonation">
                                             <FaDollarSign />All Donations

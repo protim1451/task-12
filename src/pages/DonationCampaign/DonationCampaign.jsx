@@ -46,7 +46,7 @@ const DonationCampaign = () => {
                             <p className="text-gray-700 mb-2">Max Donation Amount: ${campaign.maxAmount}</p>
                             <p className="text-gray-700 mb-4">Donated Amount: ${campaign.donatedAmount || 0}</p>
                             <button
-                                onClick={() => window.location.href = `/donation-campaign/${campaign._id}`}
+                                onClick={() => window.location.href = `/donationCampaign/${campaign._id}`}
                                 className="px-4 py-2 bg-blue-500 text-white rounded"
                             >
                                 View Details
