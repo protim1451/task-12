@@ -24,11 +24,13 @@ import AdminHome from "../pages/Dashboard/AdminHome/AdminHome";
 import AllPets from "../pages/Dashboard/AllPets/AllPets";
 import AllDonationCampaigns from "../pages/Dashboard/AllDonationCampaigns/AllDonationCampaigns";
 import DonationDetails from "../pages/Dashboard/DonationDetails/DonationDetails";
+import NotFound from "../pages/NotFound/NotFound";
 
   export const router = createBrowserRouter([
     {
       path: "/",
       element: <Main></Main>,
+      errorElement: <NotFound></NotFound>,
       children: [
         {
             path: '/',
@@ -64,37 +66,29 @@ import DonationDetails from "../pages/Dashboard/DonationDetails/DonationDetails"
     },
     {
       path: 'dashboard',
-      element: <Dashboard></Dashboard>,
+      element: <PrivateRoute>
+        <Dashboard></Dashboard>
+      </PrivateRoute>,
       children: [
         {
           path: 'addPet',
-          element: <PrivateRoute>
-            <AddPet></AddPet>
-          </PrivateRoute>,
+          element: <AddPet></AddPet>,
         },
         {
           path: 'update-pet/:id',
-          element: <PrivateRoute>
-            <UpdatePet></UpdatePet>
-          </PrivateRoute>,
+          element: <UpdatePet></UpdatePet>,
         },
         {
           path: 'myAddedPet',
-          element: <PrivateRoute>
-            <MyAddedPets></MyAddedPets>
-          </PrivateRoute>,
+          element: <MyAddedPets></MyAddedPets>,
         },
         {
           path: 'createDonationCampaign',
-          element: <PrivateRoute>
-            <CreateDonationCampaign></CreateDonationCampaign>
-          </PrivateRoute>,
+          element:  <CreateDonationCampaign></CreateDonationCampaign>,
         },
         {
           path: 'myDonationCampaign',
-          element: <PrivateRoute>
-            <MyDonationCampaigns></MyDonationCampaigns>
-          </PrivateRoute>,
+          element: <MyDonationCampaigns></MyDonationCampaigns>,
         },
         {
           path: 'edit-donation/:id',
@@ -106,9 +100,7 @@ import DonationDetails from "../pages/Dashboard/DonationDetails/DonationDetails"
         },
         {
           path: 'userHome',
-          element: <PrivateRoute>
-            <UserHome></UserHome>
-          </PrivateRoute>
+          element:  <UserHome></UserHome>,
         },
         
         //Admin routes

@@ -10,37 +10,42 @@ const DonationModal = ({ show, onClose, campaignId }) => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         if (!stripe || !elements) {
-            return;
+          return;
         }
-
+      
         const { error, paymentMethod } = await stripe.createPaymentMethod({
-            type: 'card',
-            card: elements.getElement(CardElement),
+          type: 'card',
+          card: elements.getElement(CardElement),
         });
-
+      
         if (error) {
-            console.error('Error creating payment method:', error);
-            return;
+          console.error('Error creating payment method:', error);
+          return;
         }
-
+      
+        console.log('Payment method created:', paymentMethod);
+      
         try {
-            const response = await axios.post(`http://localhost:3000/api/donations`, {
-                amount,
-                paymentMethodId: paymentMethod.id,
-                campaignId,
-            });
-
-            if (response.data.success) {
-                onClose();
-                alert('Donation successful!');
-            } else {
-                alert('Donation failed!');
-            }
-        } catch (error) {
-            console.error('Error making donation:', error);
+          const response = await axios.post(`http://localhost:3000/api/donations`, {
+            amount,
+            paymentMethodId: paymentMethod.id,
+            campaignId,
+          });
+      
+          console.log('Server response:', response.data);
+      
+          if (response.data.success) {
+            onClose();
+            alert('Donation successful!');
+          } else {
             alert('Donation failed!');
+          }
+        } catch (error) {
+          console.error('Error making donation:', error);
+          alert('Donation failed!');
         }
-    };
+      };
+      
 
     if (!show) {
         return null;

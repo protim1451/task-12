@@ -6,7 +6,7 @@ import { Elements } from '@stripe/react-stripe-js';
 import DonationModal from './DonationModal';
 import RecommendedDonations from './RecommendedDonations';
 
-const stripePromise = loadStripe('your-stripe-public-key');
+const stripePromise = loadStripe(import.meta.env.VITE_Payment_Gateway_PK);
 
 const DonationDetails = () => {
     const { id } = useParams();

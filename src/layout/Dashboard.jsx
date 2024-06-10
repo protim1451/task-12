@@ -22,8 +22,9 @@ const Dashboard = () => {
     // }, [user]);
 
     // console.log('user role', userRole);
-    //const [isAdmin] = useAdmin();
-    const isAdmin = false;
+    const [isAdmin, isAdminLoading] = useAdmin();
+    console.log(isAdmin);
+    //const isAdmin = false;
 
     if (!user) {
         return <div>Loading...</div>;
