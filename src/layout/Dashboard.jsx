@@ -9,6 +9,7 @@ import Footer from "../pages/shared/Footer/Footer";
 import { DarkThemeToggle } from "flowbite-react";
 import useAuth from '../hooks/useAuth';
 import useAdmin from '../hooks/useAdmin';
+import { FaSackDollar } from 'react-icons/fa6';
 
 const Dashboard = () => {
     const { user } = useAuth();
@@ -85,7 +86,12 @@ const Dashboard = () => {
 
                                     <li>
                                         <NavLink className="flex gap-1 items-center" to="/dashboard/allDonation">
-                                            <FaDollarSign />All Donations
+                                            <FaDollarSign />All Donation Campaigns
+                                        </NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink className="flex gap-1 items-center" to="/dashboard/donations">
+                                            <FaSackDollar />All Donations
                                         </NavLink>
                                     </li>
                                 </>

@@ -16,7 +16,7 @@ const DonationDetails = () => {
     useEffect(() => {
         const fetchCampaign = async () => {
             try {
-                const response = await axios.get(`http://localhost:3000/api/donation-campaigns/${id}`);
+                const response = await axios.get(`https://b9a12-server-side-protim1451.vercel.app/api/donation-campaigns/${id}`);
                 setCampaign(response.data);
             } catch (error) {
                 console.error('Error fetching campaign details:', error);

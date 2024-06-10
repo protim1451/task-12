@@ -7,7 +7,7 @@ const AllDonationCampaigns = () => {
     useEffect(() => {
         const fetchCampaigns = async () => {
             try {
-                const response = await axios.get('http://localhost:3000/api/donation-campaigns');
+                const response = await axios.get('https://b9a12-server-side-protim1451.vercel.app/api/donation-campaigns');
                 setCampaigns(response.data);
             } catch (error) {
                 console.error('Error fetching campaigns:', error);
@@ -19,7 +19,7 @@ const AllDonationCampaigns = () => {
 
     const deleteCampaign = async (id) => {
         try {
-            await axios.delete(`http://localhost:3000/api/donation-campaigns/${id}`);
+            await axios.delete(`https://b9a12-server-side-protim1451.vercel.app/api/donation-campaigns/${id}`);
             setCampaigns(campaigns.filter(campaign => campaign._id !== id));
         } catch (error) {
             console.error('Error deleting campaign:', error);
@@ -36,6 +36,7 @@ const AllDonationCampaigns = () => {
                         <th className="py-2 px-4 border-b">Pet Image</th>
                         <th className="py-2 px-4 border-b">Max Amount</th>
                         <th className="py-2 px-4 border-b">Last Date</th>
+                        <th className="py-2 px-4 border-b">Owner Email</th>
                         <th className="py-2 px-4 border-b">Action</th>
                     </tr>
                 </thead>
@@ -49,9 +50,10 @@ const AllDonationCampaigns = () => {
                             </td>
                             <td className="py-2 px-4 border-b">$ {campaign.maxAmount}</td>
                             <td className="py-2 px-4 border-b">{new Date(campaign.lastDate).toLocaleDateString()}</td>
+                            <td className="py-2 px-4 border-b">{campaign.owner}</td>
                             <td className="py-2 px-4 border-b">
-                                <button 
-                                    onClick={() => deleteCampaign(campaign._id)} 
+                                <button
+                                    onClick={() => deleteCampaign(campaign._id)}
                                     className="bg-red-500 text-white px-4 py-2 rounded"
                                 >
                                     Delete

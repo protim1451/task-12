@@ -25,6 +25,8 @@ import AllPets from "../pages/Dashboard/AllPets/AllPets";
 import AllDonationCampaigns from "../pages/Dashboard/AllDonationCampaigns/AllDonationCampaigns";
 import DonationDetails from "../pages/Dashboard/DonationDetails/DonationDetails";
 import NotFound from "../pages/NotFound/NotFound";
+import MyDonation from "../pages/Dashboard/MyDonation/MyDonation";
+import AllDonations from "../pages/Dashboard/AllDonations/AllDonations";
 
   export const router = createBrowserRouter([
     {
@@ -102,6 +104,10 @@ import NotFound from "../pages/NotFound/NotFound";
           path: 'userHome',
           element:  <UserHome></UserHome>,
         },
+        {
+          path: 'myDonation',
+          element: <MyDonation></MyDonation>,
+        },
         
         //Admin routes
         {
@@ -119,6 +125,10 @@ import NotFound from "../pages/NotFound/NotFound";
         {
           path: 'allDonation',
           element: <AllDonationCampaigns></AllDonationCampaigns>,
+        },
+        {
+          path: 'donations',
+          element: <AllDonations></AllDonations>,
         },
       ]
     }

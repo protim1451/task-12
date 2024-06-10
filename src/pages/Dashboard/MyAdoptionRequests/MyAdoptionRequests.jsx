@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import useAuth from '../../../hooks/useAuth';
 import axiosPrivate from '../../../hooks/useAxiosPrivate';
+import axios from 'axios';
 
 const MyAdoptionRequests = () => {
     const [requests, setRequests] = useState([]);
@@ -18,7 +19,7 @@ const MyAdoptionRequests = () => {
           return;
         }
         try {
-          const response = await axiosPrivate.get(`/api/adoption-requests?owner=${user.email}`);
+          const response = await axios.get(`https://b9a12-server-side-protim1451.vercel.app/api/adoption-requests?owner=${user.email}`);
           console.log('Adoption requests response:', response.data);
           setRequests(response.data);
         } catch (error) {
@@ -28,7 +29,7 @@ const MyAdoptionRequests = () => {
 
     const handleUpdateRequestStatus = async (id, status) => {
         try {
-            await axiosPrivate.patch(`/api/adoption-requests/${id}`, { status });
+            await axios.patch(`https://b9a12-server-side-protim1451.vercel.app/api/adoption-requests/${id}`, { status });
             setRequests(requests.map(request =>
                 request._id === id ? { ...request, status } : request
             ));

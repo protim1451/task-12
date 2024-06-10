@@ -16,14 +16,14 @@ const UserHome = () => {
 
     const fetchUserStats = async () => {
         try {
-            const petsResponse = await fetch(`http://localhost:3000/api/pets?owner=${user.email}`);
+            const petsResponse = await fetch(`https://b9a12-server-side-protim1451.vercel.app/api/pets?owner=${user.email}`);
             if (!petsResponse.ok) {
                 throw new Error('Failed to fetch pets');
             }
             const petsData = await petsResponse.json();
             setPetCount(petsData.length);
 
-            const donationsResponse = await fetch(`http://localhost:3000/api/donation-campaigns?owner=${user.email}`);
+            const donationsResponse = await fetch(`https://b9a12-server-side-protim1451.vercel.app/api/donation-campaigns?owner=${user.email}`);
             if (!donationsResponse.ok) {
                 throw new Error('Failed to fetch donations');
             }

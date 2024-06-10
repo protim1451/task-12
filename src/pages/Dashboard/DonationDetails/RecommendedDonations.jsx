@@ -9,7 +9,7 @@ const RecommendedDonations = ({ currentCampaignId }) => {
     useEffect(() => {
         const fetchRecommended = async () => {
             try {
-                const response = await axios.get(`http://localhost:3000/api/donation-campaigns?exclude=${currentCampaignId}`);
+                const response = await axios.get(`https://b9a12-server-side-protim1451.vercel.app/api/donation-campaigns?exclude=${currentCampaignId}`);
                 console.log('Recommended campaigns:', response.data);
                 setRecommended(response.data);
                 setLoading(false);

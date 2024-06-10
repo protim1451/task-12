@@ -7,7 +7,7 @@ const AllPets = () => {
     useEffect(() => {
         const fetchPets = async () => {
             try {
-                const response = await axios.get('http://localhost:3000/api/pets');
+                const response = await axios.get('https://b9a12-server-side-protim1451.vercel.app/api/pets');
                 setPets(response.data);
             } catch (error) {
                 console.error('Error fetching pets:', error);
@@ -19,7 +19,7 @@ const AllPets = () => {
 
     const deletePet = async (id) => {
         try {
-            await axios.delete(`http://localhost:3000/api/pets/${id}`);
+            await axios.delete(`https://b9a12-server-side-protim1451.vercel.app/api/pets/${id}`);
             setPets(pets.filter(pet => pet._id !== id));
         } catch (error) {
             console.error('Error deleting pet:', error);

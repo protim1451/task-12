@@ -11,7 +11,7 @@ const useAdmin = () => {
         queryKey: [user?.email, 'isAdmin'],
         enabled: !loading,
         queryFn: async () => {
-            const res = await axios.get(`http://localhost:3000/users/admin/${user.email}`);
+            const res = await axios.get(`https://b9a12-server-side-protim1451.vercel.app/users/admin/${user.email}`);
             console.log(res.data);
             return res.data?.admin;
         }

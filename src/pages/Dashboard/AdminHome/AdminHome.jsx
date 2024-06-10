@@ -13,9 +13,9 @@ const AdminHome = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const usersResponse = await axios.get('http://localhost:3000/users');
-                const petsResponse = await axios.get('http://localhost:3000/api/pets');
-                const campaignsResponse = await axios.get('http://localhost:3000/api/donation-campaigns');
+                const usersResponse = await axios.get('https://b9a12-server-side-protim1451.vercel.app/users');
+                const petsResponse = await axios.get('https://b9a12-server-side-protim1451.vercel.app/api/pets');
+                const campaignsResponse = await axios.get('https://b9a12-server-side-protim1451.vercel.app/api/donation-campaigns');
                 setTotalUsers(usersResponse.data.length);
                 setTotalPets(petsResponse.data.length);
                 setTotalCampaigns(campaignsResponse.data.length);
