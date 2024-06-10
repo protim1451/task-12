@@ -1,7 +1,7 @@
 import React from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import "./Banner.css";  // Import the CSS file
+import "./Banner.css"; 
 
 const Banner = () => {
     return (

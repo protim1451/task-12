@@ -52,7 +52,6 @@ const PetDetails = () => {
     try {
       await axiosPublic.post('/api/adoptions', adoptionData);
       closeModal();
-      //alert('Adoption request submitted successfully!');
       Swal.fire({
         position: "top-end",
         icon: "success",

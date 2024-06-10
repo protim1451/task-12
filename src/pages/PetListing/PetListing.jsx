@@ -11,7 +11,7 @@ const PetListing = () => {
   const [hasMore, setHasMore] = useState(true);
   const axiosPublic = useAxiosPublic();
 
-  // Fetch pets with useCallback to memoize the function
+  
   const fetchPets = useCallback(async () => {
     try {
       const response = await axiosPublic.get('/api/pets', {
@@ -37,16 +37,16 @@ const PetListing = () => {
 
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
-    setPets([]); // Reset pets state
-    setPage(1); // Reset page to 1
-    setHasMore(true); // Reset hasMore to true
+    setPets([]); 
+    setPage(1); 
+    setHasMore(true); 
   };
 
   const handleCategoryChange = (option) => {
     setSelectedCategory(option);
-    setPets([]); // Reset pets state
-    setPage(1); // Reset page to 1
-    setHasMore(true); // Reset hasMore to true
+    setPets([]); 
+    setPage(1); 
+    setHasMore(true); 
   };
 
   const filteredPets = pets.filter((pet) => {
